@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">arcadion</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="email_text">Email</string>
+    <string name="password_text">Password</string>
+    <string name="signin_text">SIGN IN</string>
+    <string name="register_text">REGISTER</string>
+    <string name="ui_sign_in_failed">Sign In Failed</string>
+    <string name="profile_photo">Profile Photo</string>
+    <string name="ui_profile_photo_content_description">Content Description</string>
+    <string name="ui_button_change_title">Change TItle</string>
+    <string name="ui_profile_toast_save_text">Profile Saved</string>
+    <string name="ui_profile_photo_picker_from_camera_title">From Camera</string>
+    <string name="ui_profile_photo_picker_title">From Gallery</string>
+    <string name="dialog_fragment_tag_photo_picker">From Camera</string>
+    <string name="profile_photo_file_name">Profile Photo</string>
+    <string name="ui_profile_gender_required_text">Gender Required</string>
+</resources>
