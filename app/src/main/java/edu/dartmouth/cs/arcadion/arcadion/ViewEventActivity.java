@@ -1,4 +1,7 @@
 package edu.dartmouth.cs.arcadion.arcadion;
 
-public class ViewEventActivity {
+import android.support.v7.app.AppCompatActivity;
+
+public class ViewEventActivity extends AppCompatActivity {
+
 }

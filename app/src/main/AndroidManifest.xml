@@ -41,11 +41,19 @@
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
         <activity
             android:name=".Login.RegisterActivity"
-            android:label="Sign in">
+            android:label="Register">
         </activity>
         <activity
             android:name=".Login.SignInActivity"
             android:label="Sign in">
+        </activity>
+        <activity
+            android:name=".CreateEventActivity"
+            android:label="Create Event">
+        </activity>
+        <activity
+            android:name=".ViewEventActivity"
+            android:label="View Event">
         </activity>
 
     </application>

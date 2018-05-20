@@ -24,6 +24,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:background="@color/blue"
+        android:onClick="onCreateClicked"
         android:src="@drawable/ic_add_circle_outline_black_24dp" />
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"

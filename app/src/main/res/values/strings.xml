@@ -15,4 +15,8 @@
     <string name="dialog_fragment_tag_photo_picker">From Camera</string>
     <string name="profile_photo_file_name">Profile Photo</string>
     <string name="ui_profile_gender_required_text">Gender Required</string>
+    <string name="create_text">Submit</string>
+    <string name="event_text">Event Title</string>
+    <string name="food_text">Food Type</string>
+    <string name="address_text">Event Address</string>
 </resources>

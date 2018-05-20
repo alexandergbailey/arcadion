@@ -51,4 +51,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 SignInActivity.class);
         startActivity(intent);
     }
+
+    // if 'Register' clicked, go to ProfileActivity
+    public void onCreateClicked(View v) {
+        Intent intent = new Intent(MapsActivity.this,
+                CreateEventActivity.class);
+        startActivity(intent);
+    }
 }
