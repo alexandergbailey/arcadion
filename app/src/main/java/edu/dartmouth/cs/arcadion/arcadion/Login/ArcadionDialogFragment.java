@@ -1,4 +1,4 @@
-package edu.dartmouth.cs.arcadion.arcadion;
+package edu.dartmouth.cs.arcadion.arcadion.Login;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -7,6 +7,8 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+
+import edu.dartmouth.cs.arcadion.arcadion.R;
 
 public class ArcadionDialogFragment extends DialogFragment {
 

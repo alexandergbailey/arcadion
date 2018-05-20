@@ -40,11 +40,11 @@
         </activity>
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Login.RegisterActivity"
             android:label="Sign in">
         </activity>
         <activity
-            android:name=".SignInActivity"
+            android:name=".Login.SignInActivity"
             android:label="Sign in">
         </activity>
 

@@ -1,4 +1,4 @@
-package edu.dartmouth.cs.arcadion.arcadion;
+package edu.dartmouth.cs.arcadion.arcadion.Login;
 
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -13,7 +13,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.DialogFragment;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -40,6 +39,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.soundcloud.android.crop.Crop;
+
+import edu.dartmouth.cs.arcadion.arcadion.Constants;
+import edu.dartmouth.cs.arcadion.arcadion.R;
 
 
 public class RegisterActivity extends AppCompatActivity {

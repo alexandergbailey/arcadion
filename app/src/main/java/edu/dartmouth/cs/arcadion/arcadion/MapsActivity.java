@@ -1,6 +1,7 @@
 package edu.dartmouth.cs.arcadion.arcadion;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import edu.dartmouth.cs.arcadion.arcadion.Login.SignInActivity;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -26,6 +29,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        SharedPreferences mPrefs = getSharedPreferences(Constants.sharePrefName, MODE_PRIVATE);
+        String mKey = "email_key";
+        String mEmailValue = mPrefs.getString(mKey, "");
+        Log.d(TAG, mEmailValue);
     }
 
     @Override
@@ -36,14 +43,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(collis).title("Collis Free Food Table"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(collis));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(collis,17));
-
     }
 
     // if 'Register' clicked, go to ProfileActivity
     public void onSigninClicked(View v) {
         Intent intent = new Intent(MapsActivity.this,
                 SignInActivity.class);
-//        intent.putExtra("Extra","from_signin");
         startActivity(intent);
     }
 }
