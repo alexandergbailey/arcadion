@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -43,6 +44,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private DatabaseReference mDatabase;
     private Map<Marker, ArrayList<String>> markers = new HashMap<>();
 
+    private String mEmailValue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +56,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         SharedPreferences mPrefs = getSharedPreferences(Constants.sharePrefName, MODE_PRIVATE);
         String mKey = "email_key";
-        String mEmailValue = mPrefs.getString(mKey, "");
+        mEmailValue = mPrefs.getString(mKey, "");
         Log.d(TAG, mEmailValue);
     }
 
@@ -132,10 +135,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
-    // if 'Register' clicked, go to ProfileActivity
+    // if create event clicked, go to CreateEventActivity
     public void onCreateClicked(View v) {
-        Intent intent = new Intent(MapsActivity.this,
-                CreateEventActivity.class);
-        startActivity(intent);
+        Log.d(TAG, mEmailValue);
+        if (mEmailValue.equals("")) {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.no_email_create_text),
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(MapsActivity.this,
+                    CreateEventActivity.class);
+            startActivity(intent);
+        }
     }
 }

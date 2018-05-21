@@ -19,4 +19,5 @@
     <string name="event_text">Event Title</string>
     <string name="food_text">Food Type</string>
     <string name="address_text">Event Address</string>
+    <string name="no_email_create_text">Sign In or Sign Up to Create an Event!</string>
 </resources>

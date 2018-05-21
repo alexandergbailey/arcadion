@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -15,11 +17,17 @@ public class ViewEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_event);
+        View view = findViewById(R.id.eventview);
         if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //enable back-arrow
         }
         ArrayList<String> data = getIntent().getStringArrayListExtra("MarkerData");
-        Log.d(TAG, data.get(1).toString());
+        TextView title = view.findViewById(R.id.title);
+        title.setText(data.get(0));
+        TextView address = view.findViewById(R.id.address);
+        address.setText(data.get(1));
+        TextView food = view.findViewById(R.id.food);
+        food.setText(data.get(2));
 
     }
 

@@ -80,7 +80,6 @@ public class SignInActivity extends AppCompatActivity{
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.d(TAG, "createUserWithEmail:failure", task.getException());
-//                               updateUI(null);
                 }
             }
         });
@@ -90,6 +89,19 @@ public class SignInActivity extends AppCompatActivity{
     public void onRegisterClicked(View v) {
         Intent intent = new Intent(SignInActivity.this,
                 RegisterActivity.class);
+        startActivity(intent);
+    }
+
+    // if 'Logout' clicked, go to ProfileActivity
+    public void onLogoutClicked(View v) {
+        SharedPreferences mPrefs = getSharedPreferences(Constants.sharePrefName, MODE_PRIVATE);
+        SharedPreferences.Editor mEditor = mPrefs.edit();
+        mEditor.clear();
+        String mKey = "email_key";
+        mEditor.putString(mKey, "");
+        mEditor.apply();
+        Intent intent = new Intent(SignInActivity.this,
+                MapsActivity.class);
         startActivity(intent);
     }
 }
