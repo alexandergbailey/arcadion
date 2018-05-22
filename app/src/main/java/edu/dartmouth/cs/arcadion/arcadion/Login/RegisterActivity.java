@@ -82,7 +82,6 @@ public class RegisterActivity extends AppCompatActivity {
         if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //enable back-arrow
         }
-        extra = getIntent().getStringExtra("Extra");
         mNameTxt = findViewById(R.id.profile_name);
         mEmailTxt = findViewById(R.id.profile_email);
         mPasswordTxt = findViewById(R.id.profile_password);
@@ -93,12 +92,12 @@ public class RegisterActivity extends AppCompatActivity {
         mImageView = (ImageView) findViewById(R.id.profile_image);
         String from_main = "from_main";
         // if editing profile, disable email editing and load profile picture
-        if (extra.equals(from_main)) {
-            mEmailTxt.setEnabled(false);
-            loadSnap(); //load saved image
-        } else {
-            mImageView.setImageResource(R.drawable.anonymous_user);
-        }
+//        if (extra.equals(from_main)) {
+//            mEmailTxt.setEnabled(false);
+//            loadSnap(); //load saved image
+//        } else {
+//            mImageView.setImageResource(R.drawable.anonymous_user);
+//        }
 
         // replace saved image with current image if there is one
         // for screen rotations
@@ -107,9 +106,9 @@ public class RegisterActivity extends AppCompatActivity {
             mImageView.setImageURI(mImageCaptureUri);
         }
         // only load user data if profile is being edited, not registration from sign in
-        if (extra.equals(from_main)) {
-            loadUserData();
-        }
+//        if (extra.equals(from_main)) {
+//            loadUserData();
+//        }
 
         // check if password has been changed
         mPasswordTxt.addTextChangedListener(new TextWatcher() {
