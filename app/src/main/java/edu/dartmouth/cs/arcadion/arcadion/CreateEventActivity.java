@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +25,8 @@ public class CreateEventActivity extends AppCompatActivity {
     private String mTitle;
     private String mAddress;
     private String mFoodType;
+    private String mLocation;
+    private RadioGroup mRadio_Amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,8 @@ public class CreateEventActivity extends AppCompatActivity {
         if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //enable back-arrow
         }
+
+        mRadio_Amount = findViewById(R.id.food_amt);
     }
 
     // go back if back-arrow is pressed
@@ -48,8 +54,12 @@ public class CreateEventActivity extends AppCompatActivity {
 
     public void onSubmitClicked(View v) {
         mTitle = (String) ((EditText) findViewById(R.id.event_title)).getText().toString();
-        mAddress = (String) ((EditText) findViewById(R.id.event_address)).getText().toString();
         mFoodType = (String) ((EditText) findViewById(R.id.event_food)).getText().toString();
+        mLocation = (String) ((EditText) findViewById(R.id.event_location)).getText().toString();
+        mAddress = (String) ((EditText) findViewById(R.id.event_address)).getText().toString();
+        //amountChosen = RadioGroup.
+        //mRadio_Amount = findViewById(R.id.food_amount);
+
         EventEntry event = new EventEntry(mTitle, mAddress, mFoodType);
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.push().setValue(event.getEvent())
@@ -59,6 +69,8 @@ public class CreateEventActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Insert is done!
                             Log.d(TAG, "Success!");
+                            Toast.makeText(getApplicationContext(),
+                                    getString(R.string.event_added_confirmation), Toast.LENGTH_SHORT).show();
                         } else {
                             // Failed
                             if (task.getException() != null)

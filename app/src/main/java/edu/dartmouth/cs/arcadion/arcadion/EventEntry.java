@@ -5,15 +5,17 @@ import java.util.ArrayList;
 public class EventEntry {
 
     public String title = "";
-    public String address = "";
     public String food_type = "";
+    public String location = "";
+    public String address = "";
 
     public EventEntry(){};
 
     public EventEntry(String title, String address, String food_type){
         this.title = title;
-        this.address = address;
         this.food_type = food_type;
+        this.location = location;
+        this.address = address;
     }
 
     public ArrayList<String> getEvent() {
@@ -21,6 +23,7 @@ public class EventEntry {
             add(title);
             add(address);
             add(food_type);
+            add(location);
         }};
     }
 }
