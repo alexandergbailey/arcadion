@@ -89,7 +89,6 @@ public class RegisterActivity extends AppCompatActivity {
         mPhoneTxt = findViewById(R.id.profile_phone);
         mClassTxt = findViewById(R.id.profile_class_year);
         mMajorTxt = findViewById(R.id.profile_major);
-        mImageView = (ImageView) findViewById(R.id.profile_image);
         String from_main = "from_main";
         // if editing profile, disable email editing and load profile picture
 //        if (extra.equals(from_main)) {
@@ -101,10 +100,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         // replace saved image with current image if there is one
         // for screen rotations
-        if (savedInstanceState != null) {
-            mImageCaptureUri = savedInstanceState.getParcelable(URI_INSTANCE_STATE_KEY);
-            mImageView.setImageURI(mImageCaptureUri);
-        }
+//        if (savedInstanceState != null) {
+//            mImageCaptureUri = savedInstanceState.getParcelable(URI_INSTANCE_STATE_KEY);
+//            mImageView.setImageURI(mImageCaptureUri);
+//        }
         // only load user data if profile is being edited, not registration from sign in
 //        if (extra.equals(from_main)) {
 //            loadUserData();
@@ -143,8 +142,6 @@ public class RegisterActivity extends AppCompatActivity {
             case R.id.register:
                 // if all required fields complete, save image, print toast, and finish
                 if (saveUserData()) {
-                    saveSnap();
-
                     // Making a "toast" informing the user the picture is saved.
                     Toast.makeText(getApplicationContext(),
                             getString(R.string.ui_profile_toast_save_text),
@@ -213,129 +210,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    public void onChangePhotoClicked(View v) {
-        // changing the profile image, show the dialog asking the user
-        // to choose between taking a picture and picking one
-        displayDialog(ArcadionDialogFragment.DIALOG_ID_PHOTO_PICKER);
-    }
-
-    public void displayDialog(int id) {
-        ArcadionDialogFragment fragment = ArcadionDialogFragment.newInstance(id);
-        fragment.show(getFragmentManager(),
-                getString(R.string.dialog_fragment_tag_photo_picker));
-
-    }
-
-    // Handle data after activity returns.
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d(TAG, "onActivityResult");
-        if (resultCode != RESULT_OK)
-            return;
-
-        switch (requestCode) {
-            case REQUEST_CODE_TAKE_FROM_CAMERA:
-                // Send image taken from camera for cropping
-                Log.d(TAG, "begin crop");
-                beginCrop(mImageCaptureUri);
-                break;
-
-            case REQUEST_CODE_TAKE_FROM_GALLERY:
-                mImageCaptureUri = data.getData();
-                beginCrop(mImageCaptureUri);
-                break;
-        }
-    }
-
-    public void onPhotoPickerItemSelected(int item) {
-        Intent intent;
-
-        switch (item) {
-
-            case ArcadionDialogFragment.ID_PHOTO_PICKER_FROM_CAMERA:
-                // Take photo from camera
-                // Construct an intent with action
-                // MediaStore.ACTION_IMAGE_CAPTURE
-                intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                // Construct temporary image path and name to save the taken
-                // photo
-
-
-                ContentValues values = new ContentValues(1);
-                values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpg");
-                mImageCaptureUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
-                intent.putExtra("return-data", true);
-                try {
-                    // Start a camera capturing activity
-                    // REQUEST_CODE_TAKE_FROM_CAMERA is an integer tag you
-                    // defined to identify the activity in onActivityResult()
-                    // when it returns
-                    startActivityForResult(intent, REQUEST_CODE_TAKE_FROM_CAMERA);
-                } catch (ActivityNotFoundException e) {
-                    e.printStackTrace();
-                }
-                break;
-
-            case ArcadionDialogFragment.DIALOG_ID_PHOTO_PICKER:
-                Intent intent2 = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent2, REQUEST_CODE_TAKE_FROM_GALLERY);
-        }
-    }
-
-    // load image
-    private void loadSnap() {
-        try {
-            FileInputStream fis = openFileInput(getString(R.string.profile_photo_file_name));
-            Bitmap bmap = BitmapFactory.decodeStream(fis);
-            mImageView.setImageBitmap(bmap);
-            fis.close();
-        } catch (IOException e) {
-            mImageView.setImageResource(R.drawable.anonymous_user); //default photo if none saved
-        }
-    }
-
-    // save image
-    private void saveSnap() {
-        Log.d(TAG, "saveSnap");
-        mImageView.buildDrawingCache();
-        Bitmap bmap = mImageView.getDrawingCache();
-        try {
-            Log.d(TAG, "try");
-            FileOutputStream fos = openFileOutput(getString(R.string.profile_photo_file_name), MODE_PRIVATE);
-            bmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
-            fos.flush();
-            fos.close();
-        } catch (IOException ioe) {
-            Log.d(TAG, "catch");
-            ioe.printStackTrace();
-        }
-    }
-
-    // Method to start Crop activity using the library
-    private void beginCrop(Uri source) {
-        Log.d(TAG, "Uri dest next");
-        Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
-        Log.d(TAG, "crop.of next");
-        Crop.of(source, destination).asSquare().start(this);
-        Log.d(TAG, "crop.of finished");
-    }
-
-    private void handleCrop(int resultCode, Intent result) {
-        if (resultCode == RESULT_OK) {
-            mImageCaptureUri = Crop.getOutput(result);
-            mImageView.setImageURI(mImageCaptureUri);
-            mImageView.buildDrawingCache();
-            Bitmap bmap = mImageView.getDrawingCache();
-            mImageView.setImageBitmap(bmap);
-
-
-        } else if (resultCode == Crop.RESULT_ERROR) {
-            Toast.makeText(this, Crop.getError(result).getMessage(), Toast.LENGTH_SHORT).show();
-        }
-        Log.d(TAG, "Crop Handled");
-    }
 
     // load saved EditText fields
     private void loadUserData() {
