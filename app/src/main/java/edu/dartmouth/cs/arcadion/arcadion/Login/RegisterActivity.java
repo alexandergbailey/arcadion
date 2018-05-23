@@ -87,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
         mPasswordTxt = findViewById(R.id.profile_password);
         mRadio = findViewById(R.id.profile_gender);
         mPhoneTxt = findViewById(R.id.profile_phone);
-        mClassTxt = findViewById(R.id.profile_class);
+        mClassTxt = findViewById(R.id.profile_class_year);
         mMajorTxt = findViewById(R.id.profile_major);
         mImageView = (ImageView) findViewById(R.id.profile_image);
         String from_main = "from_main";
@@ -369,7 +369,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         mKey = "class_key";
         String mClassValue = mPrefs.getString(mKey, "");
-        ((EditText) findViewById(R.id.profile_class)).setText(mClassValue);
+        ((EditText) findViewById(R.id.profile_class_year)).setText(mClassValue);
 
         mKey = "major_key";
         String mMajorValue = mPrefs.getString(mKey, "");

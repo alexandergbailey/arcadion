@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#14A662"
     android:orientation="vertical"
-    android:background="@color/blue">
+    android:visibility="visible">
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -13,7 +14,7 @@
         android:layout_height="51dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:background="@color/blue"
+        android:background="#14A662"
         android:onClick="onSigninClicked"
         android:src="@drawable/ic_person_outline_black_24dp" />
 
@@ -23,7 +24,7 @@
         android:layout_height="46dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:background="@color/blue"
+        android:background="#14A662"
         android:onClick="onCreateClicked"
         android:src="@drawable/ic_add_circle_outline_black_24dp" />
 
@@ -34,7 +35,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="50dp"
-        tools:context=".MapsActivity"/>
+        tools:context=".MapsActivity"
+        android:fadingEdge="vertical"/>
+
+    <TextView
+        android:id="@+id/arcadion_brand_visibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="casual"
+        android:text="Arcadion"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        />
 
 
 </RelativeLayout>

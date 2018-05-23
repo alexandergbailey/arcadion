@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/descriptor_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Below, please provide helpful information for others about the quality of the food."
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:id="@+id/rating_amtQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Amount?" />
+
+    <RadioGroup
+        android:id="@+id/food_rating_amt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rating_large_amt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/large_food_amt" />
+
+        <RadioButton
+            android:id="@+id/rating_small_amt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/small_food_amt" />
+    </RadioGroup>
+
+    <!--<EditText-->
+        <!--android:id="@+id/food_amount_text"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:ems="10"-->
+        <!--android:inputType="text"-->
+        <!--android:hint="Amount" />-->
+
+    <TextView
+        android:id="@+id/rating_instruction_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please rate the food quality below"
+        android:layout_marginBottom="20dp" />
+
+    <!--<RatingBar-->
+        <!--android:id="@+id/quality_rating_bar"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:numStars="5"-->
+        <!--android:stepSize="1" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/thumbs_up_image"
+            android:layout_width="119dp"
+            android:layout_height="73dp"
+            app:srcCompat="@drawable/anonymous_user" />
+
+        <ImageView
+            android:id="@+id/thumbs_down_image"
+            android:layout_width="119dp"
+            android:layout_height="73dp"
+            app:srcCompat="@drawable/anonymous_user" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:capitalize="characters"
+        android:text="Submit" />
+
+</LinearLayout>
