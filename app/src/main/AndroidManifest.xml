@@ -31,7 +31,7 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_app"
-            android:icon="@drawable/ic_cake_pink_24dp"
+            android:icon="@drawable/arcadion_icon"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
