@@ -1,23 +1,28 @@
 package edu.dartmouth.cs.arcadion.arcadion;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ViewEventActivity extends AppCompatActivity {
 
     private static final String TAG = "ViewEventActivity";
+    private RadioGroup mRadio_Amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_event);
         View view = findViewById(R.id.eventview);
+        mRadio_Amount = findViewById(R.id.food_rating_amt);
         if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //enable back-arrow
         }
@@ -42,5 +47,16 @@ public class ViewEventActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    int like = 0;
+    int dislike = 0;
+
+    public void onUpClicked(View v) {
+        like++;
+    }
+
+    public void onDownClicked(View v) {
+        dislike++;
     }
 }

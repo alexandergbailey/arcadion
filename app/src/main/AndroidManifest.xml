@@ -30,7 +30,7 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_app"
+            android:label="Arcadion"
             android:icon="@drawable/arcadion_icon"
             android:launchMode="singleTop">
             <intent-filter>
@@ -55,6 +55,10 @@
         <activity
             android:name=".ViewEventActivity"
             android:label="View Event">
+        </activity>
+        <activity
+            android:name=".FoodRatingActivity"
+            android:label="Rate Event">
         </activity>
 
     </application>

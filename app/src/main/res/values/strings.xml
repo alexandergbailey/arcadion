@@ -28,4 +28,5 @@
     <string name="small_food_amt">Not a lot</string>
     <string name="food_image_description">Add a picture</string>
     <string name="food_rating_amount">Amount?</string>
+    <string name="registration_confirmation">Thank you for rating!</string>
 </resources>
