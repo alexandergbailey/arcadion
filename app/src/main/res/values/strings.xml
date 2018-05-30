@@ -29,4 +29,8 @@
     <string name="food_image_description">Add a picture</string>
     <string name="food_rating_amount">Amount?</string>
     <string name="registration_confirmation">Thank you for rating!</string>
+    <string name="no_email_view_text">Sign In or Sign Up to View an Event!</string>
+    <string name="downvote">Sorry you didn\'t enjoy the food :(</string>
+    <string name="upvote">We\'re glad you enjoyed the food :) Come back soon!</string>
+    <string name="over">Thank you for your help!</string>
 </resources>

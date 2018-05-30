@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -26,7 +27,7 @@ public class CreateEventActivity extends AppCompatActivity {
     private String mAddress;
     private String mFoodType;
     private String mLocation;
-    private RadioGroup mRadio_Amount;
+    private int mRadio_Amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +36,6 @@ public class CreateEventActivity extends AppCompatActivity {
         if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //enable back-arrow
         }
-
-        mRadio_Amount = findViewById(R.id.food_amt);
     }
 
     // go back if back-arrow is pressed
@@ -57,10 +56,9 @@ public class CreateEventActivity extends AppCompatActivity {
         mFoodType = (String) ((EditText) findViewById(R.id.event_food)).getText().toString();
         mLocation = (String) ((EditText) findViewById(R.id.event_location)).getText().toString();
         mAddress = (String) ((EditText) findViewById(R.id.event_address)).getText().toString();
-        //amountChosen = RadioGroup.
-        //mRadio_Amount = findViewById(R.id.food_amount);
+        mRadio_Amount = ((RadioGroup) findViewById(R.id.food_amt)).getCheckedRadioButtonId();
 
-        EventEntry event = new EventEntry(mTitle, mAddress, mFoodType);
+        EventEntry event = new EventEntry(mTitle, mFoodType, mLocation, mAddress, mRadio_Amount);
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.push().setValue(event.getEvent())
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {

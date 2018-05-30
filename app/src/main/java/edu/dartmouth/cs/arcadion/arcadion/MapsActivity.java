@@ -88,6 +88,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (value == null) {
                     return;
                 }
+                Log.d(TAG, "id follows: lsdflisjfsf");
                 HashMap<String, ArrayList<String>> list = (HashMap<String, ArrayList<String>>) value;
                 for (String key: list.keySet()) {
                     Log.d(TAG, key);
@@ -95,7 +96,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     if (list.get(key) == null) {
                         continue;
                     }
-                    displayMarker(list.get(key));
+                    displayMarker(list.get(key), key);
                 }
             }
             @Override
@@ -106,11 +107,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
-    public void displayMarker(ArrayList<String> data) {
+    public void displayMarker(ArrayList<String> data, String key) {
+        data.add(key);
         Geocoder geocoder = new Geocoder(this);
         Log.d(TAG, "YOUR ADDRESS:");
         try {
-            List<Address> address = geocoder.getFromLocationName(data.get(1), 1);
+            List<Address> address = geocoder.getFromLocationName(data.get(3), 1);
             if (address.size() > 0) {
                 Log.d(TAG, String.valueOf(address.get(0).getLatitude()));
                 Log.d(TAG, "that was it bruh");
@@ -125,11 +127,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public boolean onMarkerClick(final Marker marker) {
-        ArrayList<String> data = markers.get(marker);
-        Intent intent = new Intent(MapsActivity.this,
-                ViewEventActivity.class);
-        intent.putExtra("MarkerData",data);
-        startActivity(intent);
+        if (mEmailValue.equals("")) {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.no_email_view_text),
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            ArrayList<String> data = markers.get(marker);
+            Intent intent = new Intent(MapsActivity.this,
+                    ViewEventActivity.class);
+            intent.putExtra("MarkerData", data);
+            startActivity(intent);
+        }
         return true;
     }
 

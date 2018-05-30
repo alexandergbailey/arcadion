@@ -15,6 +15,11 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -36,10 +41,26 @@
             android:id="@+id/food"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="200dp"/>
+            android:layout_marginBottom="5dp"/>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amount of food: "
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"/>
 
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"/>
+    </LinearLayout>
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
@@ -53,44 +74,49 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="30dp"
+        android:gravity="center"
         android:text="Below, please provide helpful information for others about the quality of the food."
         android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/rating_amtQ"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Amount?" />
-
-    <RadioGroup
-        android:id="@+id/food_rating_amt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/rating_large_amt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/large_food_amt" />
-
-        <RadioButton
-            android:id="@+id/rating_small_amt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/small_food_amt" />
-    </RadioGroup>
 
     <TextView
         android:id="@+id/rating_instruction_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please rate the food quality below"
+        android:gravity="center"
+        android:text="Submitting your rating will bring you back to the map"
         android:layout_marginBottom="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#00FF00"
+            android:text="+"/>
+        <TextView
+            android:id="@+id/up_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#00FF00"
+            android:layout_marginRight="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            android:layout_marginLeft="20dp"
+            android:text="-"/>
+        <TextView
+            android:id="@+id/down_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -113,6 +139,42 @@
             android:layout_height="wrap_content"
             android:onClick="onDownClicked"
             android:src="@drawable/ic_thumb_down_black_24dp"  />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onRatedClicked"
+        android:text="Submit"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/over_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#FF0000"/>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text=" users said this event is over. Click the following button if you agree:"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onOverClicked"
+            android:text="Event Over"/>
 
     </LinearLayout>
 </LinearLayout>

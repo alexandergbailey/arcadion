@@ -30,22 +30,36 @@
         android:hint="@string/password_text"
         android:inputType="textPassword" />
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onSignInClicked"
-        android:text="@string/signin_text" />
+        android:layout_marginTop="45dp"
+        android:gravity="center_horizontal"
+        android:textAlignment="center">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onRegisterClicked"
-        android:text="@string/register_text" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onSignInClicked"
+            android:text="@string/signin_text" />
 
-    <Button
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRegisterClicked"
+            android:text="@string/register_text" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onLogoutClicked"
-        android:text="LOGOUT" />
+        android:gravity="center_horizontal"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onLogoutClicked"
+            android:text="LOGOUT" />
+    </LinearLayout>
 
 </LinearLayout>
